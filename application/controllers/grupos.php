@@ -302,6 +302,7 @@ class Grupos extends CI_Controller {
 	
 		$data['title'] = 'Editar grupo';
 		$this->load->view('edit_group', $data);	
+		
 	}
 
 }
