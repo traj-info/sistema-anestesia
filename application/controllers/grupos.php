@@ -26,10 +26,10 @@ class Grupos extends CI_Controller {
 		}
 	
 	
-		if(isset($_GET['msg']) && isset($_GET['msg_type']) && $_GET['msg'] != "" && $_GET['msg_type'] != "")
+		if(($this->input->get('msg') && $this->input->get('msg_type')))
 		{
-			$data['msg'] = urldecode(html_entity_decode($_GET['msg']));
-			$data['msg_type'] = urldecode(html_entity_decode($_GET['msg_type']));
+			$data['msg'] = urldecode(html_entity_decode($this->input->get('msg', TRUE)));
+			$data['msg_type'] = urldecode(html_entity_decode($this->input->get('msg_type', TRUE)));
 		}
 		
 		$data['title'] = 'Ver grupos';
@@ -85,7 +85,7 @@ class Grupos extends CI_Controller {
 				redirect("/grupos/?msg=$msg&msg_type=$msg_type");
 				return;
 			}
-			else if($flag_erro == 'db_eror')
+			else if($flag_erro == 'db_error')
 			{
 				$data['msg'] = '<strong>Erro na gravação no banco de dados.</strong><br />Tente novamente e, se o problema persistir, notifique o administrador do sistema.';
 				$data['msg_type'] = 'error';
@@ -213,7 +213,7 @@ class Grupos extends CI_Controller {
 					redirect("/grupos/?msg=$msg&msg_type=$msg_type");
 					return;
 				}
-				else if($flag_erro == 'db_eror')
+				else if($flag_erro == 'db_error')
 				{
 					$data['msg'] = '<strong>Erro na gravação no banco de dados.</strong><br />Tente novamente e, se o problema persistir, notifique o administrador do sistema.';
 					$data['msg_type'] = 'error';

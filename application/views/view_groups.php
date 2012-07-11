@@ -1,6 +1,7 @@
 <?php $this->load->view('header'); ?>
 <?php $this->load->view('grupos_opcoes'); ?>
 <?php echo (isset($msg) && isset($msg_type) )? msg($msg, $msg_type) : ''; ?>
+<?php echo ($this->input->get('msg') && $this->input->get('msg_type'))? msg(urldecode(html_entity_decode($this->input->get('msg', TRUE))), urldecode(html_entity_decode($this->input->get('msg_type', TRUE)))) : ''; ?>
 <h2><?php echo $title; ?></h2>
 <h3>Abaixo segue a lista de grupos cadastrados</h3>
 

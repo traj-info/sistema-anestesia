@@ -133,10 +133,10 @@ class Usuarios extends CI_Controller
 			$users = arrayToObject($users);
 		}
 		
-		if(isset($_GET['msg']) && isset($_GET['msg_type']) && $_GET['msg'] != "" && $_GET['msg_type'] != "")
+		if(($this->input->get('msg') && $this->input->get('msg_type')))
 		{
-			$data['msg'] = urldecode(html_entity_decode($_GET['msg']));
-			$data['msg_type'] = urldecode(html_entity_decode($_GET['msg_type']));
+			$data['msg'] = urldecode(html_entity_decode($this->input->get('msg', TRUE)));
+			$data['msg_type'] = urldecode(html_entity_decode($this->input->get('msg_type', TRUE)));
 		}
 
 		$data['title'] = "Usuários";
@@ -176,6 +176,7 @@ class Usuarios extends CI_Controller
 					$u->wp_username = $post['hidUsername'][$new_user];
 					$u->wp_firstname = $post['hidFirstName'][$new_user];
 					$u->wp_lastname = $post['hidLastName'][$new_user];
+					$u->email = $post['hidEmail'][$new_user];
 					$u->nome = $post['hidNome'][$new_user];
 					
 					//$u->modified_author_id = //TODO: completar este campo
@@ -201,7 +202,7 @@ class Usuarios extends CI_Controller
 					redirect("/usuarios/?msg=$msg&msg_type=$msg_type");
 					return;
 				}
-				else if($flag_erro == 'db_eror')
+				else if($flag_erro == 'db_error')
 				{
 					$data['msg'] = '<strong>Erro na gravação no banco de dados.</strong><br />Tente novamente e, se o problema persistir, notifique o administrador do sistema.';
 					$data['msg_type'] = 'error';

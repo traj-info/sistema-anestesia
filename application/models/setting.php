@@ -62,7 +62,30 @@ class Setting extends DataMapper {
 		return $this->where('status <>', 'closed')->get();
 	}
 	*/
-
+	
+	private function _strip_email($txt)
+	{
+		return substr($txt, 6);
+	}
+	
+	public function get_email_settings()
+	{
+		$result = $this->like('param', 'email_%')->get();
+		if($this->result_count() > 0)
+		{
+			foreach($result as $row)
+			{
+				$set[$this->_strip_email($row->param)] = $row->value;
+			}
+			
+			return arrayToObject($set);
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+	
 	// --------------------------------------------------------------------
 	// Custom Validation Rules
 	//   Add custom validation rules for this model here.

@@ -44,6 +44,7 @@ foreach($atuais as $id => $user)
 	echo form_hidden('hidFirstName[' . $user['id'] . ']', $user['firstname']);
 	echo form_hidden('hidLastName[' . $user['id'] . ']', $user['lastname']);
 	echo form_hidden('hidUsername[' . $user['id'] . ']', $user['username']);
+	echo form_hidden('hidEmail[' . $user['id'] . ']', $user['email']);
 	echo "</tr>";
 }
 

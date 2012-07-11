@@ -86,6 +86,11 @@ class User extends DataMapper {
 	{
 	}
 
+	public function get_active()
+	{
+		return $this->where('status_id', STATUS_ACTIVE)->get();
+	}
+	
 	// --------------------------------------------------------------------
 	// Custom Methods
 	//   Add your own custom methods here to enhance the model.

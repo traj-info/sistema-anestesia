@@ -27,7 +27,22 @@ class Message extends DataMapper {
 	// --------------------------------------------------------------------
 
 	var $validation = array(
-
+		'body' => array(
+			'label' => 'Mensagem',
+			'rules' => array('required')
+		),
+		'to' => array(
+			'label' => 'Destinatário(s)',
+			'rules' => array('required')
+		),
+		'subject' => array(
+			'label' => 'Assunto',
+			'rules' => array('required')
+		),
+		'reference' => array(
+			'label' => 'Referência',
+			'rules' => array('required')
+		)
 	);
 
 	// --------------------------------------------------------------------
@@ -69,6 +84,25 @@ class Message extends DataMapper {
 	}
 	*/
 
+	
+	public function record_count_to($to) {
+        return $this->where('to_id', $to)->count();
+    }
+
+    public function get_to($to, $limit, $start) {
+        $this->limit($limit, $start);
+		$this->order_by('created', 'desc');
+        $query = $this->where('to_id', $to)->get();
+
+        if ($query->result_count() > 0) {
+            foreach ($query as $row) {
+				$row->from->get();
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
 	// --------------------------------------------------------------------
 	// Custom Validation Rules
 	//   Add custom validation rules for this model here.

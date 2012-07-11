@@ -145,7 +145,7 @@ $config['delimiter'] = " > ";
  * 		lang['stocks'] = 'Stok';
  * So, your breadcrumb now will be : Home > Gudang > Stok > Search Direct
  */
-$config['replacer'] = array('usuarios' => 'Usuários', 'add' => 'Adicionar', 'relatorios' => 'Relatórios', 'configuracoes' => 'Configurações', 'avaliacao' => 'Avaliações', 'sessao' => 'Sessão');
+$config['replacer'] = array('usuarios' => 'Usuários', 'add' => 'Adicionar', 'relatorios' => 'Relatórios', 'configuracoes' => 'Configurações', 'avaliacao' => 'Avaliações', 'sessao' => 'Sessão', 'write' => 'Nova mensagem', 'inbox' => 'Mensagens recebidas');
 
 /**
  * --------------------------

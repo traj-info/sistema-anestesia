@@ -2,6 +2,9 @@
 
 	/* TRAJETTORIA CUSTOM CONSTANTS */
 
+	#EMAILS
+	define("EMAIL_BACKUP", "backup@trajettoria.com");
+	
 	#USER STATUS
 	define("STATUS_INACTIVE", "0");
 	define("STATUS_ACTIVE", "1");
